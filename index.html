@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Basic map</title>
+    <meta name="viewport" content="width=device-width, 
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <script src="js/leaflet.js"></script>
+    <style>
+        html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#map { 
+    width: 60%;
+    height: 100%;
+    float: left;
+}
+#text {
+    height: 100%;
+    width: 40%;
+    float: right;
+}
+#geojsontext {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 90%;
+    height: 80%;
+}
+#submit {
+    margin: 20px;
+}
+        
+    </style>
+</head>
+
+<body>
+
+
+
+    <div id="map"></div>
+    <div id="text">
+        
+        <input type="button" id="submit" value="Show">
+    </div>
+
+
+    <script>
+        let map = L.map("map").setView([0, 0], 1);
+            L.tileLayer(
+                    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                    {
+                        attribution: '&copy; <a href="http://' +
+                            'www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    }
+                ).addTo(map);
+
+
+            function showGeojson() {
+                    let txt ;
+                    txt = {
+                    "type": "FeatureCollection",
+                    "metadata": {
+                        "generated": 1645275010000,
+                        "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson",
+                        "title": "USGS All Earthquakes, Past Hour",
+                        "status": 200,
+                        "api": "1.10.3",
+                        "count": 9
+                    },
+                    "features": [
+                        {
+                            "type": "Feature",
+                            "properties": {
+                                "mag": 0.85,
+                                "place": "8km W of Cobb, CA",
+                                "time": 1645274698720,
+                                "updated": 1645274791912,
+                                "tz": null,
+                                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc73695086",
+                                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73695086.geojson",
+                                "felt": null,
+                                "cdi": null,
+                                "mmi": null,
+                                "alert": null,
+                                "status": "automatic",
+                                "tsunami": 0,
+                                "sig": 11,
+                                "net": "nc",
+                                "code": "73695086",
+                                "ids": ",nc73695086,",
+                                "sources": ",nc,",
+                                "types": ",nearby-cities,origin,phase-data,",
+                                "nst": 11,
+                                "dmin": 0.01094,
+                                "rms": 0.02,
+                                "gap": 99,
+                                "magType": "md",
+                                "type": "earthquake",
+                                "title": "M 0.9 - 8km W of Cobb, CA"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                    -122.8093338,
+                                    38.8343315,
+                                    2.2
+                                ]
+                            },
+                            "id": "nc73695086"
+                        },
+                        {
+                            "type": "Feature",
+                            "properties": {
+                                "mag": 1.6,
+                                "place": "23 km N of Dyer, Nevada",
+                                "time": 1645274489603,
+                                "updated": 1645274708555,
+                                "tz": null,
+                                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/nn00834161",
+                                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nn00834161.geojson",
+                                "felt": null,
+                                "cdi": null,
+                                "mmi": null,
+                                "alert": null,
+                                "status": "automatic",
+                                "tsunami": 0,
+                                "sig": 39,
+                                "net": "nn",
+                                "code": "00834161",
+                                "ids": ",nn00834161,",
+                                "sources": ",nn,",
+                                "types": ",origin,phase-data,",
+                                "nst": 20,
+                                "dmin": 0.195,
+                                "rms": 0.3834,
+                                "gap": 105.54,
+                                "magType": "ml",
+                                "type": "earthquake",
+                                "title": "M 1.6 - 23 km N of Dyer, Nevada"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                    -118.0622,
+                                    37.8763,
+                                    3.4
+                                ]
+                            },
+                            "id": "nn00834161"
+                        },
+                        {
+                            "type": "Feature",
+                            "properties": {
+                                "mag": 0.84,
+                                "place": "4km NW of The Geysers, CA",
+                                "time": 1645274196880,
+                                "updated": 1645274832428,
+                                "tz": null,
+                                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc73695076",
+                                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73695076.geojson",
+                                "felt": null,
+                                "cdi": null,
+                                "mmi": null,
+                                "alert": null,
+                                "status": "automatic",
+                                "tsunami": 0,
+                                "sig": 11,
+                                "net": "nc",
+                                "code": "73695076",
+                                "ids": ",nc73695076,",
+                                "sources": ",nc,",
+                                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                                "nst": 12,
+                                "dmin": 0.00633,
+                                "rms": 0.02,
+                                "gap": 82,
+                                "magType": "md",
+                                "type": "earthquake",
+                                "title": "M 0.8 - 4km NW of The Geysers, CA"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                    -122.7845001,
+                                    38.8076668,
+                                    0.04
+                                ]
+                            },
+                            "id": "nc73695076"
+                        },
+                        {
+                            "type": "Feature",
+                            "properties": {
+                                "mag": 0.84,
+                                "place": "6km NW of The Geysers, CA",
+                                "time": 1645274078220,
+                                "updated": 1645274651409,
+                                "tz": null,
+                                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc73695071",
+                                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73695071.geojson",
+                                "felt": null,
+                                "cdi": null,
+                                "mmi": null,
+                                "alert": null,
+                                "status": "automatic",
+                                "tsunami": 0,
+                                "sig": 11,
+                                "net": "nc",
+                                "code": "73695071",
+                                "ids": ",nc73695071,",
+                                "sources": ",nc,",
+                                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                                "nst": 7,
+                                "dmin": 0.006411,
+                                "rms": 0.02,
+                                "gap": 99,
+                                "magType": "md",
+                                "type": "earthquake",
+                                "title": "M 0.8 - 6km NW of The Geysers, CA"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                    -122.8093338,
+                                    38.8170013,
+                                    1.26
+                                ]
+                            },
+                            "id": "nc73695071"
+                        },
+                        {
+                            "type": "Feature",
+                            "properties": {
+                                "mag": 1.59,
+                                "place": "24km W of Westmorland, CA",
+                                "time": 1645273692620,
+                                "updated": 1645274372780,
+                                "tz": null,
+                                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci40189536",
+                                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci40189536.geojson",
+                                "felt": null,
+                                "cdi": null,
+                                "mmi": null,
+                                "alert": null,
+                                "status": "automatic",
+                                "tsunami": 0,
+                                "sig": 39,
+                                "net": "ci",
+                                "code": "40189536",
+                                "ids": ",ci40189536,",
+                                "sources": ",ci,",
+                                "types": ",focal-mechanism,nearby-cities,origin,phase-data,scitech-link,",
+                                "nst": 41,
+                                "dmin": 0.07735,
+                                "rms": 0.22,
+                                "gap": 38,
+                                "magType": "ml",
+                                "type": "earthquake",
+                                "title": "M 1.6 - 24km W of Westmorland, CA"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                    -115.8788333,
+                                    33.055,
+                                    3.84
+                                ]
+                            },
+                            "id": "ci40189536"
+                        },
+                        {
+                            "type": "Feature",
+                            "properties": {
+                                "mag": 1.8,
+                                "place": "25 km ESE of Skwentna, Alaska",
+                                "time": 1645273431647,
+                                "updated": 1645273736721,
+                                "tz": null,
+                                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ak0222aw5leb",
+                                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak0222aw5leb.geojson",
+                                "felt": null,
+                                "cdi": null,
+                                "mmi": null,
+                                "alert": null,
+                                "status": "automatic",
+                                "tsunami": 0,
+                                "sig": 50,
+                                "net": "ak",
+                                "code": "0222aw5leb",
+                                "ids": ",ak0222aw5leb,",
+                                "sources": ",ak,",
+                                "types": ",origin,",
+                                "nst": null,
+                                "dmin": null,
+                                "rms": 0.45,
+                                "gap": null,
+                                "magType": "ml",
+                                "type": "earthquake",
+                                "title": "M 1.8 - 25 km ESE of Skwentna, Alaska"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                    -150.9688,
+                                    61.8861,
+                                    72.2
+                                ]
+                            },
+                            "id": "ak0222aw5leb"
+                        },
+                        {
+                            "type": "Feature",
+                            "properties": {
+                                "mag": 2.1500001,
+                                "place": "12 km NE of Pāhala, Hawaii",
+                                "time": 1645272824300,
+                                "updated": 1645273020530,
+                                "tz": null,
+                                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/hv72922162",
+                                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/hv72922162.geojson",
+                                "felt": null,
+                                "cdi": null,
+                                "mmi": null,
+                                "alert": null,
+                                "status": "automatic",
+                                "tsunami": 0,
+                                "sig": 71,
+                                "net": "hv",
+                                "code": "72922162",
+                                "ids": ",hv72922162,",
+                                "sources": ",hv,",
+                                "types": ",origin,phase-data,",
+                                "nst": 39,
+                                "dmin": null,
+                                "rms": 0.119999997,
+                                "gap": 128,
+                                "magType": "md",
+                                "type": "earthquake",
+                                "title": "M 2.2 - 12 km NE of Pāhala, Hawaii"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                    -155.380493164062,
+                                    19.2711658477783,
+                                    28.9500007629395
+                                ]
+                            },
+                            "id": "hv72922162"
+                        },
+                        {
+                            "type": "Feature",
+                            "properties": {
+                                "mag": 0.85,
+                                "place": "7km NW of The Geysers, CA",
+                                "time": 1645272760780,
+                                "updated": 1645273993326,
+                                "tz": null,
+                                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc73695066",
+                                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73695066.geojson",
+                                "felt": null,
+                                "cdi": null,
+                                "mmi": null,
+                                "alert": null,
+                                "status": "automatic",
+                                "tsunami": 0,
+                                "sig": 11,
+                                "net": "nc",
+                                "code": "73695066",
+                                "ids": ",nc73695066,",
+                                "sources": ",nc,",
+                                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                                "nst": 12,
+                                "dmin": 0.003671,
+                                "rms": 0.02,
+                                "gap": 88,
+                                "magType": "md",
+                                "type": "earthquake",
+                                "title": "M 0.9 - 7km NW of The Geysers, CA"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                    -122.810997,
+                                    38.8269997,
+                                    1.4
+                                ]
+                            },
+                            "id": "nc73695066"
+                        },
+                        {
+                            "type": "Feature",
+                            "properties": {
+                                "mag": 1.6,
+                                "place": "35 km E of Cordova, Alaska",
+                                "time": 1645272717279,
+                                "updated": 1645272874985,
+                                "tz": null,
+                                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ak0222aw318v",
+                                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak0222aw318v.geojson",
+                                "felt": null,
+                                "cdi": null,
+                                "mmi": null,
+                                "alert": null,
+                                "status": "automatic",
+                                "tsunami": 0,
+                                "sig": 39,
+                                "net": "ak",
+                                "code": "0222aw318v",
+                                "ids": ",ak0222aw318v,",
+                                "sources": ",ak,",
+                                "types": ",origin,",
+                                "nst": null,
+                                "dmin": null,
+                                "rms": 0.79,
+                                "gap": null,
+                                "magType": "ml",
+                                "type": "earthquake",
+                                "title": "M 1.6 - 35 km E of Cordova, Alaska"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                    -145.1156,
+                                    60.4957,
+                                    17.7
+                                ]
+                            },
+                            "id": "ak0222aw318v"
+                        }
+                    ],
+                    "bbox": [
+                        -155.38049316406,
+                        19.271165847778,
+                        0.04,
+                        -115.8788333,
+                        61.8861,
+                        72.2
+                    ]
+                };
+                    L.geoJSON(txt).addTo(map);
+                    let max=0;
+                    var ind=txt.features[txt.features.length-1].properties.time;
+                    for(let i = 0; i < txt.features.length; i++)
+                    {
+                        if (txt.features[i].properties.time > max) {
+                            max = txt.features[i].properties.time;
+                            ind = i;
+                        }
+                        if(txt.features[i].properties.mag<1.5)
+                        {
+                            L.circle([txt.features[i].geometry.coordinates[1], txt.features[i].geometry.coordinates[0]], {
+                                color: 'red',
+                                fillColor: '#f03',
+                                fillOpacity: 0.5,
+                                radius: txt.features[i].properties.mag*10000
+                            }).addTo(map);
+                        }
+                        
+                        else
+                        {
+                            L.circle([txt.features[i].geometry.coordinates[1], txt.features[i].geometry.coordinates[0]], {
+                                color: 'green',
+                                fillColor: '#f03',
+                                fillOpacity: 0.5,
+                                radius: txt.features[i].properties.mag*10000
+                            }).addTo(map);
+                        }
+                    }
+                    
+                    L.marker(txt.features[ind].geometry.coordinates.slice(0, 2), { icon: redIcon }).addTo(map);
+                    console.log(txt.features[ind].geometry.coordinates.slice(0, 2));
+                    
+                }
+
+
+                document.getElementById("submit").addEventListener("click", showGeojson);
+                var redIcon = new L.Icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                });
+                var greyIcon = new L.Icon({
+                        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+                        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                        iconSize: [25, 41],
+                        iconAnchor: [12, 41],
+                        popupAnchor: [1, -34],
+                        shadowSize: [41, 41]
+                    });
+
+                
+    </script>
+</body>
+
+</html>
